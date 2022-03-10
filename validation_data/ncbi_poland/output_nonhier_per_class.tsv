@@ -1,0 +1,46 @@
+	node	parent-node	root-dist	FN	FP	TN	TP	precision	recall	f1-score	support
+0	Asia	root	1	0	1	34	0	0.0	0.0	0.0	0
+1	Europe	root	1	1	0	0	34	1.0	0.9714285714285714	0.9855072463768115	35
+2	Northern Africa	Africa	2	0	0	0	0	0.0	0.0	0.0	0.0
+3	Sub-Saharan Africa	Africa	2	0	0	0	0	0.0	0.0	0.0	0.0
+4	Latin America and the Caribbean	Americas	2	0	0	0	0	0.0	0.0	0.0	0.0
+5	Northern America	Americas	2	0	0	0	0	0.0	0.0	0.0	0.0
+6	Eastern Asia	Asia	2	0	0	0	0	0.0	0.0	0.0	0.0
+7	South-eastern Asia	Asia	2	0	0	0	0	0.0	0.0	0.0	0.0
+8	Southern Asia	Asia	2	0	0	0	0	0.0	0.0	0.0	0.0
+9	Western Asia	Asia	2	0	0	0	0	0.0	0.0	0.0	0.0
+10	Eastern Europe	Europe	2	15	0	0	20	1.0	0.5714285714285714	0.7272727272727273	35
+11	Southern Europe	Europe	2	0	15	20	0	0.0	0.0	0.0	0
+12	Hungary	Eastern Europe	3	0	1	34	0	0.0	0.0	0.0	0
+13	Poland	Eastern Europe	3	2	0	0	33	1.0	0.9428571428571428	0.9705882352941176	35
+14	Russian federation	Eastern Europe	3	0	1	34	0	0.0	0.0	0.0	0
+15	Barbados	Latin America and the Caribbean	3	0	0	0	0	0.0	0.0	0.0	0.0
+16	Cuba	Latin America and the Caribbean	3	0	0	0	0	0.0	0.0	0.0	0.0
+17	Dominica	Latin America and the Caribbean	3	0	0	0	0	0.0	0.0	0.0	0.0
+18	Dominican republic	Latin America and the Caribbean	3	0	0	0	0	0.0	0.0	0.0	0.0
+19	Jamaica	Latin America and the Caribbean	3	0	0	0	0	0.0	0.0	0.0	0.0
+20	Mexico	Latin America and the Caribbean	3	0	0	0	0	0.0	0.0	0.0	0.0
+21	Egypt	Northern Africa	3	0	0	0	0	0.0	0.0	0.0	0.0
+22	Morocco	Northern Africa	3	0	0	0	0	0.0	0.0	0.0	0.0
+23	Tunisia	Northern Africa	3	0	0	0	0	0.0	0.0	0.0	0.0
+24	Indonesia	South-eastern Asia	3	0	0	0	0	0.0	0.0	0.0	0.0
+25	Malaysia	South-eastern Asia	3	0	0	0	0	0.0	0.0	0.0	0.0
+26	Singapore	South-eastern Asia	3	0	0	0	0	0.0	0.0	0.0	0.0
+27	Thailand	South-eastern Asia	3	0	0	0	0	0.0	0.0	0.0	0.0
+28	Vietnam	South-eastern Asia	3	0	0	0	0	0.0	0.0	0.0	0.0
+29	India	Southern Asia	3	0	0	0	0	0.0	0.0	0.0	0.0
+30	Pakistan	Southern Asia	3	0	0	0	0	0.0	0.0	0.0	0.0
+31	Sri lanka	Southern Asia	3	0	0	0	0	0.0	0.0	0.0	0.0
+32	Greece	Southern Europe	3	0	0	0	0	0.0	0.0	0.0	0.0
+33	Italy	Southern Europe	3	0	0	0	0	0.0	0.0	0.0	0.0
+34	Malta	Southern Europe	3	0	0	0	0	0.0	0.0	0.0	0.0
+35	Portugal	Southern Europe	3	0	0	0	0	0.0	0.0	0.0	0.0
+36	Spain	Southern Europe	3	0	0	0	0	0.0	0.0	0.0	0.0
+37	Cape verde	Sub-Saharan Africa	3	0	0	0	0	0.0	0.0	0.0	0.0
+38	Kenya	Sub-Saharan Africa	3	0	0	0	0	0.0	0.0	0.0	0.0
+39	South africa	Sub-Saharan Africa	3	0	0	0	0	0.0	0.0	0.0	0.0
+40	Tanzania	Sub-Saharan Africa	3	0	0	0	0	0.0	0.0	0.0	0.0
+41	Cyprus	Western Asia	3	0	0	0	0	0.0	0.0	0.0	0.0
+42	Saudi arabia	Western Asia	3	0	0	0	0	0.0	0.0	0.0	0.0
+43	Turkey	Western Asia	3	0	0	0	0	0.0	0.0	0.0	0.0
+44	United Arab Emirates	Western Asia	3	0	0	0	0	0.0	0.0	0.0	0.0

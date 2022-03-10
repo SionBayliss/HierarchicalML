@@ -46,10 +46,26 @@ ipython TrainHCModel.ipynb
 ```
 Outputs will be produced in the ‘model_outputs’ directory of the GitHub repo. These have already been generated for users that would simply like to run validation data (see below). The same range of outputs have been generated as detailed in the ‘Training on example data’ section above.
 
-## Validation on additional data
-An example of classification of an external dataset, in this case a selection of genomes downloaded from the NCBI GeneBank repository, using the model trained in the ‘Training and Testing the full HC model ’ has also been provided. It should take approx ~1.5Gb RAM and 20 sec to complete. It can be run using:
-```
-ipython RunValidationData.ipynb
-```
-Outputs will be produced in the ‘model_outputs’ directory of the GitHub repo and have the prefix “validation - “. These have already been generated for users that would simply like to view the outputs. The same range of outputs have been generated as detailed in the ‘Training on example data’ section above.
 
+## Validation datasets 
+A range of validation datasets have been used to test the efficacy of the model on external data. The 5 datasets used in the manuscript have been provided as raw pattern data and can be classified using jupyter/ipython notebook scripts. Validation data and scripts can be found in the ***'validation data'*** directory, with one directory per dataset. Each directory has the same structure containing:
+- ***sample_list.txt***: a list of samples (SRR codes) to process.
+- ***sample.location***: a tab seperated list of sample names and location (class) information.
+- ***patterns.tab***: the patterns generated from unitigs used as features in te model
+- ***classify_new_samples.ipyb***: jupyter notebook containig script to generate outputs
+
+The classify_new_samples.ipyb scripts should take less than ~1.5Gb RAM and ~20 sec to complete. They can be run using:
+```
+ipython classify_new_samples.ipyb
+```
+Outputs will be produced in the appropriate validation dataset directory. ***Note:*** these have already been generated for users that would simply like to view the outputs. These outputs include: 
+
+- ***output_hsummary.tab*** – overall summary of hierarchical summary statistics (hP, hR, hF1) for the validation dataset.
+- ***output_per_class.tsv*** - summary of hierarchical summary statistics (precision, recall, F1 score) calculated per class for the validation dataset.
+- ***output_nonhier_per_class.tsv*** - summary of non-hierarchical summary statistics (precision, recall, F1 score) calculated per class for the validation dataset.
+- ***output_per_sample.tsv*** - output containing the true label and predited class per sample as well as the predicted probabilities of the model at each node in the hierarchy. Note: only nodes investigated by the model will be shown (i.e. if a sample is classified into Europe at the regional root node it will not have a predicted probability for South-east Asia, only for European subregions).  
+
+**training_summary.tsv** – summary of hierarchical summary statistics (hP, hR, hF1) calculated per class  for the training dataset.
+**test_summary.tsv** – summary of hierarchical summary statistics (hP, hR, hF1) calculated per class for the test dataset.
+**per_class_summary.tsv** – summary of the non-hierarchical summary statistics (precision, recall, F1 score) calculated per class for the test dataset.
+**per_node_summary.tsv** – summary of the non-hierarchical summary statistics(recall, precision, accuracy, micro, weighted) calculated per node for the test dataset.
