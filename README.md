@@ -23,6 +23,24 @@ The required inputs for the model include:
 
 Examples of these files have been provided in the repository. These are the inputs used to train the model presented in the associated publication. These example files were generated from unitig data created from filtered paired fastq files. They were subsequently processed into ‘patterns’ to reduce the size of the dataset. Patterns represent groups of features which have perfect correlation, i.e. they occur in identically sets of isolates. 
 
+## Optimised model
+A fully optimised HC model, presented in the main manuscript has been mae available in the ***'optimised_model'*** directory. The model parameters were optimised using a genetic algorithm as implemented in [TPOT](https://github.com/EpistasisLab/tpot). Additional details have been provided in the main manuscript. This directory contains a pickled file containing:
+
+-***models*** - an optimised HC model. 
+-***train_features*** - features (patterns) used in the final model. 
+-***graph*** - the hierachical graph (DAG) used in the final model. 
+
+The model and associated data can be read and loaded in python using:
+```
+# load model and associated data 
+pkl = "./HierarchicalML/optimised_model/optimised_model_data.pkl"
+with gzip.open(pkl, 'rb') as f:
+    
+    models = pickle.load(f)
+    train_features = pickle.load(f)
+    graph = pickle.load(f)
+```
+
 ## Training on example data
 An example data has been created by taking the first ~100 features from the main dataset. It should run quickly (~40 secs) on even limited hardware and take ~400 Mb RAM. It can be run in full using:
 
@@ -54,7 +72,7 @@ A range of validation datasets have been used to test the efficacy of the model 
 - ***patterns.tab***: the patterns generated from unitigs used as features in te model
 - ***classify_new_samples.ipyb***: jupyter notebook containig script to generate outputs
 
-The classify_new_samples.ipyb scripts should take less than ~1.5Gb RAM and ~20 sec to complete. They can be run using:
+The classify_new_samples.ipyb scripts should take less than ~1.5Gb RAM and ~20 sec to complete. The validation data will be processed using the fully optimised model presented in the manuscript. The individual scripts can be run using:
 ```
 ipython classify_new_samples.ipyb
 ```
