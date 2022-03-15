@@ -70,11 +70,11 @@ A range of validation datasets have been used to test the efficacy of the model 
 - ***sample_list.txt***: a list of samples (SRR codes) to process.
 - ***sample.location***: a tab seperated list of sample names and location (class) information.
 - ***patterns.tab***: the patterns generated from unitigs used as features in te model
-- ***classify_new_samples.ipyb***: jupyter notebook containig script to generate outputs
+- ***classify_new_samples.ipynb***: jupyter notebook containig script to generate outputs
 
-The classify_new_samples.ipyb scripts should take less than ~1.5Gb RAM and ~20 sec to complete. The validation data will be processed using the fully optimised model presented in the manuscript. The individual scripts can be run using:
+The classify_new_samples.ipynb scripts should take less than ~1.5Gb RAM and ~20 sec to complete. The validation data will be processed using the fully optimised model presented in the manuscript. The individual scripts can be run using:
 ```
-ipython classify_new_samples.ipyb
+ipython classify_new_samples.ipynb
 ```
 Outputs will be produced in the appropriate validation dataset directory. ***Note:*** these have already been generated for users that would simply like to view the outputs. These outputs include: 
 
