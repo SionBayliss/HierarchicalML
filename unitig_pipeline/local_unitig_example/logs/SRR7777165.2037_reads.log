@@ -1,0 +1,16 @@
+
+
+----------------------------------------------------------
+
+Read QC:
+ - command = (perl /home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/qc-pipe.pl --name SRR7777165 --R1 /home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/example_reads/SRR7777165_1.fastq.gz --R2 /home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/example_reads/SRR7777165_2.fastq.gz --threads 1 --output /home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/local_unitig_example/SRR7777165/read-qc )
+ - complete
+
+----------------------------------------------------------
+
+Kmer Counting/Unitigs:
+ - command = (perl /home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/create_unitigs.pl --name SRR7777165 --threads 1 --output /home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/local_unitig_example/SRR7777165/unitigs -f --R1 /home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/local_unitig_example/SRR7777165/read-qc/SRR7777165_1.fastq.gz --R2 /home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/local_unitig_example/SRR7777165/read-qc/SRR7777165_2.fastq.gz)
+ - complete
+
+----------------------------------------------------------
+

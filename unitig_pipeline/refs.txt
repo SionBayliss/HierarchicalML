@@ -1,0 +1,2 @@
+./local_unitig_example/SRR7777155/unitigs/SRR7777155.unitigs.fa
+./local_unitig_example/SRR7777165/unitigs/SRR7777165.unitigs.fa

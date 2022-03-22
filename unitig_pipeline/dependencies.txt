@@ -1,1 +1,1 @@
-conda install fastqc trimmomatic bcalm hdf5 wget parallel unitig-caller
+conda install fastqc trimmomatic bcalm hdf5 wget parallel unitig-caller=1.1.0

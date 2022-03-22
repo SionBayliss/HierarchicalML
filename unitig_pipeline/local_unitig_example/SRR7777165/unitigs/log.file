@@ -1,0 +1,4 @@
+command: bcalm -kmer-size 31 -abundance-min 2 -nb-cores 1 -in /home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/local_unitig_example/SRR7777165/unitigs/list.file -out-dir /home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/local_unitig_example/SRR7777165/unitigs -out-tmp /home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/local_unitig_example/SRR7777165/unitigs -histo --all-abundance-counts > /home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/local_unitig_example/SRR7777165/unitigs/bcalm_log.txt 2> /home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/local_unitig_example/SRR7777165/unitigs/bcalm_log.txt
+
+unitig_count	base_count	kmer_count	singletons	%single
+3965	4883777	5022763	257936	5.14

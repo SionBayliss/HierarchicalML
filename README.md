@@ -1,15 +1,20 @@
-# Hierarchical Machine Learning (ML)
-This repository contains the required python scripts and associated data to train and test a Hierarchical Machine Learning (ML) model using most classifiers and resamplers supported by the python ski-learn and associated packages. The majority of scripts have been provided as jupyter notebook files (.ipynb) to enhance users ability to break the scripts down into manageable and understandable sections.
+# Hierarchical Machine Learning (hML)
+This repository contains the required python scripts and associated data to train and test a Hierarchical Machine Learning (hML) model using most classifiers and resamplers supported by the python ski-learn and associated packages. The majority of scripts have been provided as jupyter notebook files (.ipynb) to enhance users ability to break the scripts down into manageable and understandable sections.
 
 ## Associated Publication
 The methodology underlying the package has been detailed in ***. 
 
 ## Dependencies 
-The dependencies for all scripts presented herein can be installed most efficiently using conda and the specification file provided in the repo:
+The dependencies for all scripts presented herein can be installed most efficiently using conda and the specification files provided in the repo. Two seperate environmenst have been provided. The first ***'unitig-pipeline'*** contains dependencies required for processing raw reads into a format appropriate for input to the Hierachical Classification model. The second ***'hierarchical-ml'*** contains dependencies required to run the model and associated analyses.
 
 ```
-conda create --name Hierarchical_ML --file spec-file.txt
-conda activate  Hierarchical_ML
+# FASTQ to unitig processing pipeline
+conda create --name unitig-pipeline --file spec-file.unitig-pipeline.txt
+conda activate unitig-pipeline
+
+# model and additional analyses
+conda create --name hierarchical-ml --file spec-file.hierarchical-ml.txt
+conda activate hierarchical-ml
 ```
 ## The HC package
 
@@ -17,23 +22,24 @@ The scripts for running a Hierarchical classifier (HC) have been provided in the
 
 ## Converting FASTQ files to unitigs
 A self-contained pipeline has been in included in the 'unitig_pipeline' directory. All dependencies are included in the conda installation instructions provided (spec_file.txt). This can be used to process both local and remote FASTQ files into unitigs: 
+
 ### Local files
 Local files require an input file in the format unique_sample_id[tab]path_to_FQ1[tab]path_to_FQ2, an example of which has been provided at ***. This can be provided as an input to the unitig pipeline scripts:
 ```
 # from within unitig_pipeline
-./unitig_pipeline.pl --reads ./path_to_local_file_list.tab -o ./path_to_output_dir/
+./unitig_pipeline.pl --reads ./path_to_local_file_list.tab -o ./path_to_output_dir/ --cpus no_cpus
 
 # example
-./unitig_pipeline.pl --reads ./local_example.tab -o ./local_unitig_example/
+./unitig_pipeline.pl --reads ./local_example.tab -o ./local_unitig_example/--cpus 2
 ```
 ### Remote files
 Remote files require an input file in the format unique_sample_id[tab]SRR/ENA_code, an example of which has been provided at ***. This can be provided as an input to the unitig pipeline scripts:
 ```
 # from within unitig_pipeline
-./unitig_pipeline.pl --remote ./path_to_remote_file_list.tab -o ./unitig_pipeline/path_to_output_dir/
+./unitig_pipeline.pl --remote ./path_to_remote_file_list.tab -o ./unitig_pipeline/path_to_output_dir/ --cpus no_cpus
 
 # example
-./unitig_pipeline.pl --remote ./remote_example.tab -o ./remote_unitig_example/
+./unitig_pipeline.pl --remote ./remote_example.tab -o ./remote_unitig_example/ --cpus 2
 ```
 ### Outputs
 The script will produce a results directory per sample containing:
@@ -43,14 +49,33 @@ The script will produce a results directory per sample containing:
 
 A results_* directory (where * is the run ID) will also be produced which contains a tabular summary of all samples containing statistics relevant to read and unitig QC.  
 
-### Convert unitigs to 
+### Convert unitigs to patterns present in the HC model
+The method presented above identifies unitigs present in individual samples. In order to identify the unitig sequences identified from the UKHSA collection an additional script must be run. This is a wrapper and pre-processing script for [unitig-caller](https://github.com/johnlees/unitig-caller) which allows for the presence/absence of known unitigs to be ascertained from new samples. NOTE: an earlier version of unitig-caller has been used in this script, ensure you have the correct conda environment loaded before running it (see above). Example files have been included to test the scripts function:
+```
+# Identify unitigs from the UKHSA collection present in new samples
+# -r directory structured as per the output of the unitig_calling pipeline
+# -o output directory
+# -l list of sample IDs
+# -q set of query unitigs (in this instance from UKHSA dataset)
+./call_unitigs_from_list.pl -r ./local_unitig_example/ -o local_unitig_example/processed_to_patterns/ -l local_example.tab -q ../data/unitigs_unitigs.fasta -t 2
+```
+nce the presence/absence of reference unitigs has been ascertained these can be coverted to 'pattern' features used as the unput to the model. Each pattern represents single/multiple unitigs present in an identical selection of samples present in the UKHSA dataset. Conversion of unitigs to known patterns can be performed using the script detailed below: 
+```
+# convert unitigs to patterns present in the UKHSA model 
+# -i input unitig PA file
+# -o output pattern PA file
+# -c pregenerated pattern conversion file  
+# -p list of patterns in the UKHSA model
+./variants_to_known_patterns -i ./local_unitig_example/processed_to_patterns/counts.rtab -o ./local_unitig_example/processed_to_patterns/patterns.tab -c ../data/pattern_conversion.tab -p ../data/patterns_in_model.txt
+```
+The resulting samples/patterns can be run through the HC classifier model. NOTE: the two example samples were from Singapore (taken from the validation dataset presented in the manuscript). For details on the inputs/outputs of this scripts see the ***'validation datasets'*** section below. 
+```
+conda activate hierarchical-ml
+cd ./local_unitig_example/processed_to_patterns/
+ipython classify_new_samples.ipynb
 
-```
-### Make list of unitigs
-```
+# check output_per_sample.tsv the classifications should be SRR7777155: Singapore and SRR7777165: Malaysia.
 
-```
-Call unitigs in samples
 ```
 
 ## Hierarchical Classifier Model Inputs 

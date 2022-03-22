@@ -1,0 +1,40 @@
+initial coverage/subsampling:
+Reference length = 10000000
+Number of reads = 362759
+Average read length = 243.188385
+Estimated coverage = 17.643755
+Longest read = 251
+
+trimmomatic:
+command - trimmomatic PE -threads 1 /home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/local_unitig_example/SRR7777165/read-qc/SRR7777165_1.fq /home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/local_unitig_example/SRR7777165/read-qc/SRR7777165_2.fq /home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/local_unitig_example/SRR7777165/read-qc/SRR7777165_1.paired.fq /home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/local_unitig_example/SRR7777165/read-qc/SRR7777165_1.unpaired.fq /home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/local_unitig_example/SRR7777165/read-qc/SRR7777165_2.paired.fq /home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/local_unitig_example/SRR7777165/read-qc/SRR7777165_2.unpaired.fq ILLUMINACLIP:/home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/PE_All.fasta:2:30:10:2:keepBothReads LEADING:3 TRAILING:3 SLIDINGWINDOW:4:20 MINLEN:36 TOPHRED33 2>/home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/local_unitig_example/SRR7777165/read-qc/SRR7777165.trim_log
+TrimmomaticPE: Started with arguments:
+ -threads 1 /home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/local_unitig_example/SRR7777165/read-qc/SRR7777165_1.fq /home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/local_unitig_example/SRR7777165/read-qc/SRR7777165_2.fq /home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/local_unitig_example/SRR7777165/read-qc/SRR7777165_1.paired.fq /home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/local_unitig_example/SRR7777165/read-qc/SRR7777165_1.unpaired.fq /home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/local_unitig_example/SRR7777165/read-qc/SRR7777165_2.paired.fq /home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/local_unitig_example/SRR7777165/read-qc/SRR7777165_2.unpaired.fq ILLUMINACLIP:/home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/PE_All.fasta:2:30:10:2:keepBothReads LEADING:3 TRAILING:3 SLIDINGWINDOW:4:20 MINLEN:36 TOPHRED33
+Using PrefixPair: 'AGATGTGTATAAGAGACAG' and 'AGATGTGTATAAGAGACAG'
+Using PrefixPair: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT' and 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'GTCTCGTGGGCTCGGAGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'TCGTCGGCAGCGTCAGATGTGTATAAGAGACAG'
+Skipping duplicate Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+Skipping duplicate Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+Using Long Clipping Sequence: 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTCCGAGCCCACGAGAC'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTGACGCTGCCGACGA'
+ILLUMINACLIP: Using 2 prefix pairs, 8 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Read Pairs: 362759 Both Surviving: 362751 (100.00%) Forward Only Surviving: 8 (0.00%) Reverse Only Surviving: 0 (0.00%) Dropped: 0 (0.00%)
+TrimmomaticPE: Completed successfully
+
+post-trim coverage/subsampling:
+Reference length = 1000000000
+Number of reads = 362751
+Average read length = 243.190491
+Estimated coverage = 0.176435
+Longest read = 251
+
+fastqc:
+fastqc --outdir=/home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/local_unitig_example/SRR7777165/read-qc --dir=/home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/local_unitig_example/SRR7777165/read-qc --quiet /home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/local_unitig_example/SRR7777165/read-qc/SRR7777165_1.fastq /home/sbayliss/Desktop/projects/PHE_Salmonella/notebooks/github/HierarchicalML/unitig_pipeline/local_unitig_example/SRR7777165/read-qc/SRR7777165_2.fastq
+
+ - fastqc completed
+ - qc-pipe completed successfully

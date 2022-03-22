@@ -1,0 +1,283 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+use Getopt::Long qw(GetOptions);
+use Pod::Usage;
+
+# convert variants based upon a previously created pattern list
+
+=head1  SYNOPSIS
+
+ variants_to_known_patterns -i /path/to/vcf_file -p /path/to/pattern_file -o /path/to/output_file
+
+ Input/Output:
+ -c|--conversion	path to pattern conversion file [required]
+ -i|--input		input rtab, one variant per line [required]
+ -o|--output		output list [required]
+	
+ Filter:
+ -l|--list 		filter samples on list [optional]	
+ -p|--patterns	include patterns in list from 
+ 			conversion file [optional] 
+ 	
+ General:
+ -h|--help		usage information
+ 
+=cut
+
+# switch buffer off 
+$| = 1;
+
+# variables
+my $input = "";
+my $output = "";
+my $conversion = "";
+my $list = "";
+my $plist= "";
+my $help = 0; 
+
+GetOptions(
+
+	'help|?' 	=> \$help,
+	
+	'input=s' 	=> \$input,
+	'conversion=s' => \$conversion,
+	'output=s'	=> \$output,	
+	
+	'list=s' => \$list,
+	'patterns=s' => \$plist,
+	#'header' => \$header
+	
+) or pod2usage(1);
+pod2usage(1) if $help;
+pod2usage( {-message => q{input vcf/table is a required arguement}, -exitval => 1, -verbose => 1 } ) if $input eq ''; 
+pod2usage( {-message => q{output file is a required arguement}, -exitval => 1, -verbose => 1 } ) if $output eq ''; 
+pod2usage( {-message => q{input conversion file is a required arguement}, -exitval => 1, -verbose => 1 } ) if $conversion eq ''; 
+
+# [optional] parse pattern list - patterns to include
+my %plist  = ();
+my $no_patterns_list;
+if ($plist ne ''){
+
+	open LIST, $plist or die " - ERROR: could not open patterns list ($plist)\n";
+	while (<LIST>){
+	
+		my $line = $_;
+		chomp $line;
+		
+		my @vars = split(/\t/, $line, -1);
+		
+		$plist {$vars[0]} = 1;
+		
+	}close LIST;
+	
+	# feedback
+	$no_patterns_list = keys(%plist); 
+	print " - $no_patterns_list patterns to include from list file\n";
+}
+
+# [optional] open list file- samples
+my %list  = (); 
+my $no_samples_list;
+if ($list ne ''){
+
+	open LIST, $list or die " - ERROR: could not open list ($list)\n";
+	while (<LIST>){
+	
+		my $line = $_;
+		chomp $line;
+		
+		my @vars = split(/\t/, $line, -1);
+		
+		$list {$vars[0]} = 1 unless $vars[0] eq "id";
+		
+	}close LIST;
+	
+	# feedback
+	$no_samples_list = keys(%list); 
+	print " - $no_samples_list samples to include from list file\n";
+}
+
+# parse coversion file 
+print " - parsing conversion file\n"; 
+my %pattern_store = ();
+my $no_variants = 0;
+open PAT, $conversion or die " - ERROR: could not open list ($conversion)\n";
+while (<PAT>){
+
+	my $line = $_;
+	chomp $line;
+	
+	my @vars = split(/\t/, $line, -1);
+
+	if ( (/#/) || ($vars[0] eq "pattern_id") ){
+		
+	}else{
+	
+		my $pattern_id = $vars[0];
+		my $var_count = $vars[1];
+		my $no_samples = $vars[2];
+		my $variants = $vars[3];
+		
+		# include if pattern in list file or no pattern file present 
+		if ( ($plist eq "") || ($plist{$pattern_id}) ){ 
+		
+			# store variants in pattern
+			for my $i ( split(/,/, $variants) ){
+				$pattern_store{$pattern_id}{$i} = 1;
+				++$no_variants;
+			}
+	
+		}
+	}
+
+}close PAT;
+
+# feedback 
+my @pattern_ids = sort( {$a<=>$b} keys(%pattern_store) );
+my $no_patterns = @pattern_ids;
+print " - $no_patterns patterns in conversion file containing $no_variants variants\n";
+
+#### stop
+my $stop = 0; ###
+
+# unzip input if gzipped 
+my $working_input = $input;
+if ($input =~ /.gz$/){
+	`gunzip -c $input > $input.temp`;
+	$working_input = "$input.temp";
+}
+
+# parse variant file
+print (" - parsing variant file\n");
+my %headers = ();
+my %variant_store = ();
+open VAR, $working_input or die " - ERROR: could not open variant file ($working_input)\n";
+while (<VAR>){
+
+	my $line = $_;
+	chomp $line;
+	
+	my @vars = split(/\t/, $line, -1);
+	
+	#print $
+	
+	# store header for samples
+	if ($vars[0] eq "pattern_id"){
+	
+		for my $i (0..$#vars){
+			my $h = $vars[$i];
+			$h =~ s/.unitigs//; # remove suffix
+			$headers{$i} = $h;
+		}
+		
+	}else{
+		
+		# sanity check 
+		die " - ERROR: no headers found.\n" if scalar(keys(%headers)) == 0;
+		
+		# variant id
+		my $v_id = $vars[0];
+		
+		# store variant per genome
+		for my $i (1..$#vars){
+			
+			my $pa = $vars[$i];# binary presence/absence;
+			my $genome = $headers{$i};
+			
+			# only include genomes from list [optional]
+			if ( ($list eq '') || ($list{$genome}) ){
+			
+				if ($pa == 1){
+					$variant_store{$genome}{$v_id} = 1;
+				}
+				
+			}
+		}
+		
+		# stop count ###
+		#++$stop;
+		#last if $stop > 1000;		  
+	}	
+}close VAR;
+
+# feedback 
+my @genomes = keys(%variant_store);
+my $no_genomes = scalar(@genomes);
+print(" - $no_genomes genome in input file\n");
+
+# remove temp file if present
+unlink "$input.temp" if ( -f "$input.temp");
+
+# open discrepancy output file and print headers
+open DOUT, ">$output.discrepancies" or die " - could not open $output.discrepancies\n";
+my $dheaders_line = "genome\tpattern_id\tvariant_no\texpected_no\tproportion\n";
+print DOUT $dheaders_line;
+
+# convert variants into patterns per genome
+print (" - converting variants to patterns\n");
+my %genome_patterns;
+for my $i (0..$#genomes){
+	
+	my $g = $genomes[$i];
+	
+	# loop through all patterns per genome - check for presence of pattern variants
+	for my $pat_id ( keys(%pattern_store) ){
+		
+		# get expected variants
+		my @exp_variants = keys(%{$pattern_store{$pat_id}});
+		my $exp_no = @exp_variants;
+		
+		# count variant pa
+		my $v_count = 0;
+		for my $exp_v (@exp_variants){
+			++$v_count if $variant_store{$g}{$exp_v};
+		}		
+		
+		# store as present if proportion >= threshold
+		my $thresh = 0.5;
+		my $prop = $v_count/$exp_no;
+		if ($prop >= $thresh){
+			$genome_patterns{$g}{$pat_id} = 1;
+		}
+		
+		# output discrepancies from expectation for multi-variants
+		if ( ($v_count>0) && ($exp_no>1) && ($v_count != $exp_no) ){
+			print DOUT "$g\t$pat_id\t$v_count\t$exp_no\t$prop\n";
+		} 
+
+	}
+	
+	#last;###
+		
+} close DOUT;
+
+# open output file and print headers
+print " - printing outputs\n"; 
+open OUT, ">$output" or die " - could not open $output\n";
+my $headers_line = sprintf("%s\t%s\n", "pattern_id", join("\t", @genomes));
+print OUT $headers_line;
+
+# print pattern presence/absence per genome
+for my $k1 (0..$#pattern_ids){
+
+	my $p = $pattern_ids[$k1];
+	my @outline = ($p);
+	
+	for my $k2 (0..$#genomes){
+		my $g = $genomes[$k2];
+	 	if ($genome_patterns{$g}{$p}){
+	 		push(@outline, 1);
+	 	}else{
+	 		push(@outline, 0);
+	 	}
+	}
+	
+	# print outline
+	my $outline = sprintf("%s\n", join("\t", @outline));
+	print OUT $outline;
+	
+}close OUT;
+
+print (" - completed.\n");

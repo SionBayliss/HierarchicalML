@@ -1,0 +1,24 @@
+The kmer sizes that will be used are as follows: 
+	Kmer size: 31 and estimated number of k-mers: 536870912
+#master threads: 1 #worker threads: 1
+Determine all non-unique k-mers
+Time taken: 30.3532 seconds
+Calculate the multiplicity of each k-mer
+Time taken: 13.7362 seconds
+Remove unique k-mers in the hash tables
+Time taken: 0.128945 seconds
+Estimate the minimum multiplicity threshold
+For k-mer size 31
+Maximum multiplicity 255
+	Coverage: 50698045
+	Average coverage: 10.9798
+	Number of k-mers 4617384
+	K-mer frequency histogram (>=2): 
+105918,129557,168554,228473,286894,331647,364601,380885,375985,358264,334200,294942,254069,216749,175395,141268,110290,88901,69033,52631,39019,28880,20408,14190,11300,7750,5803,3697,2887,2289,1741,1282,1007,591,494,416,363,292,214,160,180,126,128,87,82,46,41,41,46,41,52,47,44,35,56,72,30,33,32,39,42,22,26,45,38,49,27,34,32,30,26,33,28,16,29,27,25,25,23,28,20,26,34,31,36,56,59,28,42,31,34,41,38,41,43,48,48,69,48,50,55,68,67,66,105,90,80,56,77,84,87,80,98,81,81,86,90,66,75,86,103,95,66,75,103,87,57,35,54,70,73,69,95,70,85,53,44,29,27,36,42,49,49,53,41,30,34,27,33,25,20,21,13,8,7,6,5,12,11,18,11,9,13,17,25,16,14,6,8,7,14,3,12,10,14,9,3,6,8,9,9,3,2,1,6,3,10,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+Will estimate the minimum multiplicty from the k-mer histogram
+Min multi:  3
+Time taken: 0.0118239 seconds
+Perform error correction
+Processed 498708 reads
+Finish the error correction
+Overall execution time 78.659 seconds

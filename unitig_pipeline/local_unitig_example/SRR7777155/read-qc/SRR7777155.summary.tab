@@ -1,0 +1,2 @@
+#reference_length	org_no._reads	org_read_l	org_cov	no_reads_pre_trim	no_reads_post_trim	av_read_l_post_trim	cov_post_trim
+0	249390	218.677032	10.907173	249390	249354	218.685791	0.109060

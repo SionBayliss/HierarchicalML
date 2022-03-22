@@ -1,0 +1,3 @@
+#sample_id	reference_length(bp)	org_no._reads	org_read_l	org_cov	no_reads_pre_trim	no_reads_post_trim	av_read_l_post_trim	cov_post_trim
+SRR7777165	0	362759	243.188385	17.643755	362759	362751	243.190491	0.176435
+SRR7777155	0	249390	218.677032	10.907173	249390	249354	218.685791	0.109060
