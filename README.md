@@ -30,7 +30,7 @@ Local files require an input file in the format unique_sample_id[tab]path_to_FQ1
 ./unitig_pipeline.pl --reads ./path_to_local_file_list.tab -o ./path_to_output_dir/ --cpus no_cpus
 
 # example
-./unitig_pipeline.pl --reads ./local_example.tab -o ./local_unitig_example/--cpus 2
+./unitig_pipeline.pl --reads ./local_example.tab -o ./local_unitig_example/ --cpus 2
 ```
 ### Remote files
 Remote files require an input file in the format unique_sample_id[tab]SRR/ENA_code, an example of which has been provided at ***. This can be provided as an input to the unitig pipeline scripts:
