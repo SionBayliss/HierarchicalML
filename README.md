@@ -141,7 +141,7 @@ Outputs will be produced in the ‘model_outputs’ directory of the GitHub repo
 A range of validation datasets have been used to test the efficacy of the model on external data. The 5 datasets used in the manuscript have been provided as raw pattern data and can be classified using jupyter/ipython notebook scripts. Validation data and scripts can be found in the ***'validation data'*** directory, with one directory per dataset. Each directory has the same structure containing:
 - ***sample_list.txt***: a list of samples (SRR codes) to process.
 - ***sample.location***: a tab seperated list of sample names and location (class) information.
-- ***patterns.tab***: the patterns generated from unitigs used as features in te model
+- ***patterns.tab***: the patterns generated from unitigs (see above) used as features in the model
 - ***classify_new_samples.ipynb***: jupyter notebook containig script to generate outputs
 
 The classify_new_samples.ipynb scripts should take less than ~1.5Gb RAM and ~20 sec to complete. The validation data will be processed using the fully optimised model presented in the manuscript. The individual scripts can be run using:
