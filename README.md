@@ -24,7 +24,7 @@ The scripts for running a Hierarchical classifier (HC) have been provided in the
 A self-contained pipeline has been in included in the 'unitig_pipeline' directory. All dependencies are included in the conda installation instructions provided (spec_file.txt). This can be used to process both local and remote FASTQ files into unitigs: 
 
 ### Local files
-Local files require an input file in the format unique_sample_id[tab]path_to_FQ1[tab]path_to_FQ2, an example of which has been provided at ***. This can be provided as an input to the unitig pipeline scripts:
+Local files require an input file in the format unique_sample_id[tab]path_to_FQ1[tab]path_to_FQ2, an example of which has been provided at unitig-pipeline/local_example.tab. This can be provided as an input to the unitig pipeline scripts:
 ```
 # first activate the right conda environment
 conda activate unitig-pipeline
@@ -36,7 +36,7 @@ conda activate unitig-pipeline
 ./unitig_pipeline.pl --reads ./local_example.tab -o ./local_unitig_example/ --cpus 2
 ```
 ### Remote files
-Remote files require an input file in the format unique_sample_id[tab]SRR/ENA_code, an example of which has been provided at ***. This can be provided as an input to the unitig pipeline scripts:
+Remote files require an input file in the format unique_sample_id[tab]SRR/ENA_code, an example of which has been provided at unitig_pipeline/remote_example.tab. This can be provided as an input to the unitig pipeline scripts:
 ```
 # first activate the right conda environment
 conda activate unitig-pipeline
