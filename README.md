@@ -55,7 +55,7 @@ The script will produce a results directory per sample containing:
 
 A results_* directory (where * is the run ID) will also be produced which contains a tabular summary of all samples containing statistics relevant to read and unitig QC.  
 
-### Convert unitigs to patterns present in the HC model
+## Convert unitigs to patterns present in the HC model
 The method presented above identifies unitigs present in individual samples. In order to identify the unitig sequences identified from the UKHSA collection an additional script must be run. This is a wrapper and pre-processing script for [unitig-caller](https://github.com/johnlees/unitig-caller) which allows for the presence/absence of known unitigs to be ascertained from new samples. NOTE: an earlier version of unitig-caller has been used in this script, ensure you have the correct conda environment loaded before running it (see above). Example files have been included to test the scripts function:
 ```
 # Identify unitigs from the UKHSA collection present in new samples
