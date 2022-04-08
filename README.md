@@ -58,9 +58,6 @@ A results_* directory (where * is the run ID) will also be produced which contai
 ### Convert unitigs to patterns present in the HC model
 The method presented above identifies unitigs present in individual samples. In order to identify the unitig sequences identified from the UKHSA collection an additional script must be run. This is a wrapper and pre-processing script for [unitig-caller](https://github.com/johnlees/unitig-caller) which allows for the presence/absence of known unitigs to be ascertained from new samples. NOTE: an earlier version of unitig-caller has been used in this script, ensure you have the correct conda environment loaded before running it (see above). Example files have been included to test the scripts function:
 ```
-# first activate the right conda environment
-conda activate unitig-pipeline
-
 # Identify unitigs from the UKHSA collection present in new samples
 # -r directory structured as per the output of the unitig_calling pipeline
 # -o output directory
@@ -68,7 +65,7 @@ conda activate unitig-pipeline
 # -q set of query unitigs (in this instance from UKHSA dataset)
 ./call_unitigs_from_list.pl -r ./local_unitig_example/ -o local_unitig_example/processed_to_patterns/ -l local_example.tab -q ../data/unitigs_unitigs.fasta -t 2
 ```
-nce the presence/absence of reference unitigs has been ascertained these can be coverted to 'pattern' features used as the unput to the model. Each pattern represents single/multiple unitigs present in an identical selection of samples present in the UKHSA dataset. Conversion of unitigs to known patterns can be performed using the script detailed below: 
+Once the presence/absence of reference unitigs has been ascertained these can be coverted to 'pattern' features used as the unput to the model. Each pattern represents single/multiple unitigs present in an identical selection of samples present in the UKHSA dataset. Conversion of unitigs to known patterns can be performed using the script detailed below: 
 ```
 # convert unitigs to patterns present in the UKHSA model 
 # -i input unitig PA file
