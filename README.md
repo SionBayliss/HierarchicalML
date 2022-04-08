@@ -93,7 +93,7 @@ The required inputs for the model include:
 Examples of these files have been provided in the repository. These are the inputs used to train the model presented in the associated publication. These example files were generated from unitig data created from filtered paired fastq files. They were subsequently processed into ‘patterns’ (see above) to reduce the size of the dataset. Patterns represent groups of features which have perfect correlation, i.e. they occur in identically sets of isolates. 
 
 ## Optimised model
-A fully optimised HC model, presented in the main manuscript has been mae available in the ***'optimised_model'*** directory. The model parameters were optimised using a genetic algorithm as implemented in [TPOT](https://github.com/EpistasisLab/tpot). Additional details have been provided in the main manuscript. This directory contains a pickled file containing:
+A fully optimised HC model, presented in the main manuscript has been made available in the ***'optimised_model'*** directory. The model parameters were optimised using a genetic algorithm as implemented in [TPOT](https://github.com/EpistasisLab/tpot). Additional details have been provided in the main manuscript. This directory contains a pickled file containing:
 
 - ***models*** - an optimised HC model. 
 - ***train_features*** - features (patterns) used in the final model. 
