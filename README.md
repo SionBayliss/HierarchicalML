@@ -111,7 +111,7 @@ with gzip.open(pkl, 'rb') as f:
 ```
 
 ## Training on example data
-An example data has been created by taking the first ~100 features from the main dataset. It should run quickly (~40 secs) on even limited hardware and take ~400 Mb RAM. It can be run in full using:
+Example data has been created by taking the first ~100 features from the main dataset. It should run quickly (~40 secs) on even limited hardware and take ~400 Mb RAM. It can be run in full using:
 
 ```
 ipython TrainHCModel_example.ipynb
