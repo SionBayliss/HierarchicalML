@@ -74,7 +74,7 @@ Once the presence/absence of reference unitigs has been ascertained these can be
 # -p list of patterns in the UKHSA model
 ./variants_to_known_patterns -i ./local_unitig_example/processed_to_patterns/counts.rtab -o ./local_unitig_example/processed_to_patterns/patterns.tab -c ../data/pattern_conversion.tab -p ../data/patterns_in_model.txt
 ```
-The resulting samples/patterns can be run through the HC classifier model. NOTE: the two example samples were from Singapore (taken from the validation dataset presented in the manuscript). For details on the inputs/outputs of this scripts see the ***'validation datasets'*** section below. 
+The resulting samples/patterns can be run through the HC classifier model. NOTE: the two example samples were from Singapore (taken from the validation dataset presented in the manuscript). For details on the inputs/outputs of these scripts see the ***'validation datasets'*** section below. 
 ```
 conda activate hierarchical-ml
 cd ./local_unitig_example/processed_to_patterns/
