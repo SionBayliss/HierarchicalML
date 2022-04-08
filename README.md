@@ -1,5 +1,5 @@
 # Hierarchical Machine Learning (hML)
-This repository contains the required python scripts and associated data to train and test a Hierarchical Machine Learning (hML) model using most classifiers and resamplers supported by the python ski-learn and associated packages. The majority of scripts have been provided as jupyter notebook files (.ipynb) to enhance users ability to break the scripts down into manageable and understandable sections.
+This repository contains the required python scripts and associated data to train and test a Hierarchical Machine Learning (hML) model using most classifiers and resamplers supported by the python ski-learn and associated packages in a Linux environment. The majority of scripts have been provided as jupyter notebook files (.ipynb) to enhance users ability to break the scripts down into manageable and understandable sections.
 
 ## Associated Publication
 The methodology underlying the package has been detailed in 'Hierarchical machine learning predicts geographical origin of Salmonella within four minutes of sequencing' 
