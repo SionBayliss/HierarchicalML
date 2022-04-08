@@ -156,6 +156,6 @@ Outputs will be produced in the appropriate validation dataset directory. ***Not
 - ***output_per_sample.tsv*** - output containing the true label and predited class per sample as well as the predicted probabilities of the model at each node in the hierarchy. Note: only nodes investigated by the model will be shown (i.e. if a sample is classified into Europe at the regional root node it will not have a predicted probability for South-east Asia, only for European subregions).  
 
 **training_summary.tsv** – summary of hierarchical summary statistics (hP, hR, hF1) calculated per class  for the training dataset.
-**test_summary.tsv** – summary of hierarchical summary statistics (hP, hR, hF1) calculated per class for the test dataset.
+**test_summary.tsv** – summary of hierarchical summary statistics (hP, hR, hF1) calculated per class for the test dataset. 
 **per_class_summary.tsv** – summary of the non-hierarchical summary statistics (precision, recall, F1 score) calculated per class for the test dataset.
 **per_node_summary.tsv** – summary of the non-hierarchical summary statistics(recall, precision, accuracy, micro, weighted) calculated per node for the test dataset.
