@@ -129,7 +129,7 @@ Outputs will be produced in the ‘example outputs’ directory of the GitHub re
 
 
 ## Training and Testing the full HC model 
-To train the full model will take approx 10-2n mins on a desktop computer and require ~15Gb RAM. The model is trained using a train/test split of 0.75/0.25. It can be run in full using:
+To train the full model will take approx 10-20 mins on a desktop computer and require ~15Gb RAM. The model is trained using a train/test split of 0.75/0.25. It can be run in full using:
 
 ```
 ipython TrainHCModel.ipynb
