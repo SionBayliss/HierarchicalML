@@ -101,6 +101,9 @@ A fully optimised HC model, presented in the main manuscript has been made avail
 
 The model and associated data can be read and loaded in python using:
 ```
+# first activate the right conda environment
+conda activate hierarchical-ml
+
 # load model and associated data 
 pkl = "./HierarchicalML/optimised_model/optimised_model_data.pkl"
 with gzip.open(pkl, 'rb') as f:
