@@ -26,6 +26,9 @@ A self-contained pipeline has been in included in the 'unitig_pipeline' director
 ### Local files
 Local files require an input file in the format unique_sample_id[tab]path_to_FQ1[tab]path_to_FQ2, an example of which has been provided at ***. This can be provided as an input to the unitig pipeline scripts:
 ```
+# first activate the right conda environment
+conda activate unitig-pipeline
+
 # from within unitig_pipeline
 ./unitig_pipeline.pl --reads ./path_to_local_file_list.tab -o ./path_to_output_dir/ --cpus no_cpus
 
@@ -35,6 +38,9 @@ Local files require an input file in the format unique_sample_id[tab]path_to_FQ1
 ### Remote files
 Remote files require an input file in the format unique_sample_id[tab]SRR/ENA_code, an example of which has been provided at ***. This can be provided as an input to the unitig pipeline scripts:
 ```
+# first activate the right conda environment
+conda activate unitig-pipeline
+
 # from within unitig_pipeline
 ./unitig_pipeline.pl --remote ./path_to_remote_file_list.tab -o ./unitig_pipeline/path_to_output_dir/ --cpus no_cpus
 
