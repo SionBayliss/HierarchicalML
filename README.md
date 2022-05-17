@@ -2,7 +2,7 @@
 This repository contains the required python scripts and associated data to train and test a Hierarchical Machine Learning (hML) model using most classifiers and resamplers supported by the python ski-learn and associated packages in a Linux environment. The majority of scripts have been provided as jupyter notebook files (.ipynb) to enhance users ability to break the scripts down into manageable and understandable sections.
 
 ## Associated Publication
-The methodology underlying the package has been detailed in 'Hierarchical machine learning predicts geographical origin of Salmonella within four minutes of sequencing' 
+The methodology underlying the package has been detailed in a manuscript which is currently in submission.
 
 ## Dependencies 
 The dependencies for all scripts presented herein can be installed most efficiently using conda and the specification files provided in the repo. Two seperate environmenst have been provided. The first ***'unitig-pipeline'*** contains dependencies required for processing raw reads into a format appropriate for input to the Hierachical Classification model. The second ***'hierarchical-ml'*** contains dependencies required to run the model and associated analyses.
