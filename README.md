@@ -155,7 +155,7 @@ Outputs will be produced in the appropriate validation dataset directory. ***Not
 - ***output_nonhier_per_class.tsv*** - summary of non-hierarchical summary statistics (precision, recall, F1 score) calculated per class for the validation dataset.
 - ***output_per_sample.tsv*** - output containing the true label and predited class per sample as well as the predicted probabilities of the model at each node in the hierarchy. Note: only nodes investigated by the model will be shown (i.e. if a sample is classified into Europe at the regional root node it will not have a predicted probability for South-east Asia, only for European subregions).  
 
-## How to citation
+## How to cite
 
 Sion C Bayliss, Rebecca K Locke, Claire Jenkins, Marie Anne Chattaway, Timothy J Dallman, Lauren A Cowley (2023) **Rapid geographical source attribution of *Salmonella enterica* serovar Enteritidis genomes using hierarchical machine learning** *eLife* 12:e84167
 
