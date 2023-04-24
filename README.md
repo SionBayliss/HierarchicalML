@@ -2,7 +2,7 @@
 This repository contains the required python scripts and associated data to train and test a Hierarchical Machine Learning (hML) model using most classifiers and resamplers supported by the python ski-learn and associated packages in a Linux environment. The majority of scripts have been provided as jupyter notebook files (.ipynb) to enhance users ability to break the scripts down into manageable and understandable sections.
 
 ## Associated Publication
-The methodology underlying the package has been detailed in a manuscript which is currently in submission.
+The methodology underlying the package has been detailed in the manuscript ["Rapid geographical source attribution of Salmonella enterica serovar Enteritidis genomes using hierarchical machine learning"](https://elifesciences.org/articles/84167) published in eLife. Please refer to citation information at the bottom of this document.
 
 ## Dependencies 
 The dependencies for all scripts presented herein can be installed most efficiently using conda and the specification files provided in the repo. Two seperate environmenst have been provided. The first ***'unitig-pipeline'*** contains dependencies required for processing raw reads into a format appropriate for input to the Hierachical Classification model. The second ***'hierarchical-ml'*** contains dependencies required to run the model and associated analyses.
@@ -154,4 +154,13 @@ Outputs will be produced in the appropriate validation dataset directory. ***Not
 - ***output_per_class.tsv*** - summary of hierarchical summary statistics (precision, recall, F1 score) calculated per class for the validation dataset.
 - ***output_nonhier_per_class.tsv*** - summary of non-hierarchical summary statistics (precision, recall, F1 score) calculated per class for the validation dataset.
 - ***output_per_sample.tsv*** - output containing the true label and predited class per sample as well as the predicted probabilities of the model at each node in the hierarchy. Note: only nodes investigated by the model will be shown (i.e. if a sample is classified into Europe at the regional root node it will not have a predicted probability for South-east Asia, only for European subregions).  
+
+## How to citation
+
+Sion C Bayliss, Rebecca K Locke, Claire Jenkins, Marie Anne Chattaway, Timothy J Dallman, Lauren A Cowley (2023) **Rapid geographical source attribution of *Salmonella enterica* serovar Enteritidis genomes using hierarchical machine learning** *eLife* 12:e84167
+
+https://doi.org/10.7554/eLife.84167
+
+
+
 
